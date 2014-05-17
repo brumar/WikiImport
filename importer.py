@@ -1,4 +1,4 @@
-import logging, json, importio, latch, ConfigParser, csv
+import logging, json, importio, latch, csv
 
 dataRows=[]#usefull to get the datas
 dataRows2=[]#usefull to get the datas
@@ -9,17 +9,6 @@ class AnkiCard:
 		def __init__(self, q, a):
 				self.front=q.encode('utf8', 'ignore')
 				self.back=a.encode('utf8', 'ignore')
-class Options:
-	def __init__(self,path):
-		self.dictOptions={}
-		self.config = ConfigParser.ConfigParser()
-		self.config.read(path)
-
-	def getOptions(self,i):
-		section=self.config.sections()[i]
-		options = self.config.options(section)
-		for option in options:
-			self.dictOptions[option] = self.config.get(section, option)
 
 
 def GenerateAnkiCardsFromWikipediaCategory(url,deckName,user_id,api_key):
