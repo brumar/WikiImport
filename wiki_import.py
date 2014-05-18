@@ -7,12 +7,12 @@ from aqt.utils import showInfo
 from PyQt4 import QtGui
 from importer import *
 
-
 wiki_MODEL="wiki_note"
 TITLE_FIELD_NAME="title"
 CONTENT_FIELD_NAME="content"
 
-
+# Note: This class was adapted from the Real-Time_Import_for_use_with_the_Rikaisama_Firefox_Extension plug-in by cb4960@gmail.com
+#.. itself adapted from Yomichan plugin by Alex Yatskov.
 class Anki:
     def addwikiCards(self, wikiCards,deck,tags):
         count=0
@@ -210,6 +210,7 @@ def main():
         showInfo("import.io is working for you, please wait a few minutes")
         cards=GenerateAnkiCardsFromWikipediaCategory(categUrl,deckName,useroptions.user_id,useroptions.api_key)
         number=anki.addwikiCards(cards,deckName,tags=["wiki"])
+        print '\a'
         text=deckName+"have been created with "+str(number)+" cards"
         aqt.utils.tooltip(text, 3000)
 
