@@ -4,6 +4,10 @@
 You are at the wrong place, to make use of this plug-in go its dedicated page on [anki addons] (https://ankiweb.net/shared/addons/)
 
 ## Notes for developpers
+Already tested on :
+- windows 7 64 bits
+- Ubuntu 12.04
+- Mac OSX 10.9.2
 This plug-in makes use of **import.io**, a tool to extract informations from websites without pain.
 
 ### Why ?
