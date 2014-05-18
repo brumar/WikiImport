@@ -19,7 +19,6 @@ class Anki:
         modelName=wiki_MODEL
         for card in wikiCards:
             ankiFieldInfo = {}
-            aqt.utils.tooltip(card.front, 3000)
             ankiFieldInfo[TITLE_FIELD_NAME] = card.front.decode('utf-8')
             ankiFieldInfo[CONTENT_FIELD_NAME] = card.back.decode('utf-8')
             noteId = self.addNote(deck, modelName,ankiFieldInfo,tags)
