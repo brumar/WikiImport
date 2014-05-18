@@ -11,6 +11,7 @@ More informations [there] (http://www.mediawiki.org/wiki/Category:MediaWiki_API_
 These two import.io extractors are programmatically used  :
 - Get the pages within a category : [link to import.io] (https://import.io/data/mine/?id=68b4b6ac-25ce-434d-923d-7cc9661216ff)
 - Get the first first paragraphe and the title of a wikipedia page : [link to import.io] (https://import.io/data/mine/?id=7fc7daa2-25a4-4649-b48c-be1d7fd8756e)
+
 ## How to make it work from these sources
 - Download all the python files
 - Open Anki addons directory
