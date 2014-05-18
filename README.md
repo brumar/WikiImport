@@ -1,6 +1,6 @@
 # Anki plug-in to import wikipedia content
 ## Note for regular users
-You are at the wrong place, to make use of this plug-in go it's dedicated page on [anki addons] (https://ankiweb.net/shared/addons/)
+You are at the wrong place, to make use of this plug-in go its dedicated page on [anki addons] (https://ankiweb.net/shared/addons/)
 ## Notes for developpers
 This plug-in makes use of import.io, a tool to extract informations from websites without pain.
 ### Why ?
@@ -14,14 +14,16 @@ These two import.io extractors are programmatically used  :
 ## How to make it work from these sources
 - Download all the python files
 - Open Anki addons directory
-- create a python file named with this line : from
-- Create a directory named
+- create a python file named *wikiimport.py* with this single line inside : *import WikiImport.wiki_import*
+- Create a directory named *WikiImport*
 - Move all the python files in there
 - Create an account on import.io
 - Create an API key from [this page] (https://import.io/data/account/)
 - With these two informations complete the two lines in useroptions.py
 - Open a profile in anki2 and try the plug-in with tools > wipedia import
-
 ## Known Issues
 - Sometimes the first paragraphe is broken in wikipedia in order to print a mathematical formula or a list.
 It's a rare event, but it can produce incomplete anki cards.
+- Card model is not good. I took it from the great IRead2 addon. You can see it in the **add_wiki_model function** inside **wiki_import.py**
+## Future Developpement
+- Other ideas to import the web into anki using import.io ?
