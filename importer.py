@@ -111,7 +111,7 @@ if __name__ == "__main__":
 	dataRows=[]
 	dataRows2=[]
 	user_id="93e6a27f-a52e-4ecc-8c70-79b1df692285"
-	api_key="Ebyx+nTSWi6CPJDy6MYlbcAuKiBAnMKWPIir2d6KdnFz+M4ZGXeIbhfM9sskC5fzjrqFyM0HmXVaIzGOGbTkpw=="
+	api_key=""#complete this line
 	url="http://en.wikipedia.org/wiki/Category:Statistical_paradoxes"
 	deckName="StatParadoxes"
 	cards=GenerateAnkiCardsFromWikipediaCategory(url,deckName,user_id,api_key)
