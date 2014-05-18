@@ -47,7 +47,14 @@ def GenerateAnkiCardsFromWikipediaCategory(url,deckName,user_id,api_key):
 			if(all(x in d.keys() for x in ["title","first_par"])):
 				cards.append(AnkiCard(d["title"],d["first_par"]))
 		client.disconnect()
+		reinitGlobalVariables()
 		return cards
+
+def reinitGlobalVariables():
+	global dataRows
+	global dataRows2
+	dataRows=[]
+	dataRows2=[]
 
 def callback2(query, message):
 		global dataRows2
