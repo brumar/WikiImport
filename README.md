@@ -2,7 +2,7 @@
 ## Note for regular users
 You are at the wrong place, to make use of this plug-in go its dedicated page on [anki addons] (https://ankiweb.net/shared/addons/)
 ## Notes for developpers
-This plug-in makes use of import.io, a tool to extract informations from websites without pain.
+This plug-in makes use of **import.io**, a tool to extract informations from websites without pain.
 ### Why ?
 It was a lazy move, and not very wikipedia friendly as import.io circumvent the regular way to get datas from wikipedia.
 This plug-in won't be used with huge requests to wikipedia as it only read the pages within a single category, thus it's not really evil,but it could be better.
