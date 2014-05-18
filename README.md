@@ -26,5 +26,6 @@ These two import.io extractors are programmatically used  :
 - Sometimes the first paragraphe is broken in wikipedia in order to print a mathematical formula or a list.
 It's a rare event, but it can produce incomplete anki cards.
 - Card model is not good. I took it from the great IRead2 addon. You can see it in the **add_wiki_model function** inside **wiki_import.py**
+
 ## Future Developpement
 - Other ideas to import the web into anki using import.io ?
