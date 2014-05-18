@@ -211,7 +211,7 @@ def main():
         cards=GenerateAnkiCardsFromWikipediaCategory(categUrl,deckName,useroptions.user_id,useroptions.api_key)
         number=anki.addwikiCards(cards,deckName,tags=["wiki"])
         print '\a'
-        text=deckName+"have been created with "+str(number)+" cards"
+        text=deckName+" have been created with "+str(number)+" cards"
         aqt.utils.tooltip(text, 3000)
 
 
