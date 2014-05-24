@@ -21,7 +21,7 @@ class Anki:
             ankiFieldInfo = {}
             ankiFieldInfo[TITLE_FIELD_NAME] = card.front.decode('utf-8')
             ankiFieldInfo[CONTENT_FIELD_NAME] = card.back.decode('utf-8')
-            noteId = self.addNote(deck, modelName,ankiFieldInfo,tags)
+            self.addNote(deck, modelName,ankiFieldInfo,tags)
             count+=1
         self.stopEditing()
         return count
@@ -65,36 +65,6 @@ class Anki:
             mm.addTemplate(wiki_model, t)
             mm.add(wiki_model)
             return wiki_model
-        else:
-            fmap = mm.fieldMap(wiki_model)
-            title_ord, title_field = fmap[TITLE_FIELD_NAME]
-            text_ord, text_field = fmap[CONTENT_FIELD_NAME]
-
-    def getGuidsFromAnkiId(self,ids):
-        guids=[]
-        for a_id in ids:
-            card = self.collection().getCard(a_id)
-            items=card.note().items()
-            if(len(items)==3):
-                guids.append(items[2][1])#not a very smart access
-        return guids
-
-    def canAddNote(self, deckName, modelName, fields):
-        return bool(self.createNote(deckName, modelName, fields))
-
-
-
-
-    def getCardsIdFromTag(self,tag):
-        query="tag:"+tag
-        ids = self.collection().findCards(query)
-        return ids
-
-    def browseNote(self, noteId):
-        browser = aqt.dialogs.open('Browser', self.window())
-        browser.form.searchEdit.lineEdit().setText('nid:{0}'.format(noteId))
-        browser.onSearch()
-
 
     def startEditing(self):
         self.window().requireReset()
@@ -104,66 +74,17 @@ class Anki:
         if self.collection():
             self.window().maybeReset()
 
-
-    def window(self):
-        return aqt.mw
-
-
-    def addUiAction(self, action):
-        self.window().form.menuTools.addAction(action)
-
-
-    def collection(self):
-        return self.window().col
-
-    def manager(self):
-        return self.decks().DeckManager(self.window())
-
+    def decks(self):
+        return self.collection().decks
 
     def models(self):
         return self.collection().models
 
+    def collection(self):
+        return self.window().col
 
-    def modelNames(self):
-        return self.models().allNames()
-
-
-    def modelFieldNames(self, modelName):
-        model = self.models().byName(modelName)
-        if model is not None:
-            return [field['name'] for field in model['flds']]
-
-
-    def decks(self):
-        return self.collection().decks
-
-
-    def deckNames(self):
-        return self.decks().allNames()
-
-
-    def curModelID(self):
-        return self.collection().conf['curModel']
-
-
-    def curDeckID(self):
-        return self.collection().conf['curDeck']
-
-
-    def curModel(self):
-        return self.models().get(self.curModelID())
-
-
-    def curDeck(self):
-        return self.decks().get(self.curDeckID())
-
-
-    def curModelName(self):
-        return self.curModel()['name']
-
-
-    def curDeckName(self):
-        return self.curDeck()['name']
+    def window(self):
+        return aqt.mw
 
 
 class getInfo(QtGui.QWidget):
@@ -171,21 +92,6 @@ class getInfo(QtGui.QWidget):
     def __init__(self,input):
         self.input=input
         super(getInfo, self).__init__()
-
-        #self.initUI()
-
-    def initUI(self):
-
-        self.btn = QtGui.QPushButton('Dialog', self)
-        self.btn.move(20, 20)
-        self.btn.clicked.connect(self.showDialog)
-
-        self.le = QtGui.QLineEdit(self)
-        self.le.move(130, 22)
-
-        self.setGeometry(300, 300, 290, 150)
-        self.setWindowTitle('Input dialog')
-        self.show()
 
     def showDialog(self):
 
@@ -210,12 +116,10 @@ def main():
         showInfo("import.io is working for you, please wait a few minutes")
         cards=GenerateAnkiCardsFromWikipediaCategory(categUrl,deckName,useroptions.user_id,useroptions.api_key)
         number=anki.addwikiCards(cards,deckName,tags=["wiki"])
+        anki.stopEditing()
         print '\a'
         text=deckName+" have been created with "+str(number)+" cards"
         aqt.utils.tooltip(text, 3000)
-
-
-    #controller.addNoteToDeck(c)
 
 action = aqt.qt.QAction("wikipedia import", aqt.mw)
 aqt.mw.connect(action,  aqt.qt.SIGNAL("triggered()"), main)
